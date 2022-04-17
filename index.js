@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import Prisma from "@prisma/client";
+import cors from "cors";
 const { PrismaClient } = Prisma;
 dotenv.config();
 
@@ -20,6 +21,7 @@ const init = async () => {
   const app = express();
 
   app.use(express.json());
+  app.use(cors());
 
   app.post("/api/register", register);
   app.post("/api/login", login);
